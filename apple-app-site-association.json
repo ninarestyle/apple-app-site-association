@@ -5,8 +5,13 @@
       {
         "appID": "PGJLWD4D46.com.restyle.restylemarket",
         "paths": [
-          "/listing/*",
-          "/user/*"
+          "/router/*"
+        ]
+      },
+      {
+        "appID": "PGJLWD4D46.com.loopin.me.loopin",
+        "paths": [
+          "/router/*"
         ]
       }
     ]
