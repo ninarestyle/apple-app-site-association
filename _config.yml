@@ -1,0 +1,2 @@
+include:
+  - .well-known/apple-app-site-association.json
