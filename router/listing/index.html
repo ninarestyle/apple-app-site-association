@@ -1,4 +1,4 @@
-echo '<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Listing Page</title>
@@ -29,7 +29,20 @@ echo '<!DOCTYPE html>
 <body>
     <div class="container">
         <h1>Listing Page</h1>
-        <p>Welcome to the listing page!</p>
+        <p id="listing-info">Loading...</p>
     </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Get the path from the URL
+            const path = window.location.pathname;
+            const pathParts = path.split("/");
+
+            // Extract the listing ID from the path
+            const listingId = pathParts[pathParts.length - 1];
+
+            // Display the listing ID on the page
+            document.getElementById("listing-info").textContent = `Listing ID: ${listingId}`;
+        });
+    </script>
 </body>
-</html>' > router/listing/index.html
+</html>
