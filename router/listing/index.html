@@ -37,8 +37,13 @@
             const path = window.location.pathname;
             const pathParts = path.split("/");
 
-            // Extract the listing ID from the path
-            const listingId = pathParts[pathParts.length - 1];
+            // Find the part after /listing/
+            const listingIndex = pathParts.indexOf("listing");
+            let listingId = "Unknown";
+
+            if (listingIndex >= 0 && listingIndex < pathParts.length - 1) {
+                listingId = pathParts[listingIndex + 1];
+            }
 
             // Display the listing ID on the page
             document.getElementById("listing-info").textContent = `Listing ID: ${listingId}`;
