@@ -1,0 +1,27 @@
+name: Deploy apple-app-site-association
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install serve
+        run: npm install -g serve
+
+      - name: Deploy apple-app-site-association
+        run: |
+          echo "{\"version\":1,\"applinks\":{\"apps\":[],\"details\":[{\"appID\":\"TEAMID.com.yourcompany.yourapp\",\"paths\":[\"*\"]}]}}" > apple-app-site-association
+          npx serve . --listen 5000 --single
