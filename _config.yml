@@ -1,2 +1,3 @@
 include:
+  - .well-known/apple-app-site-association.json
   - router/listing/index.html
