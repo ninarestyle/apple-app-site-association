@@ -1,2 +1,2 @@
 include:
-  - .well-known/apple-app-site-association.json
+  - apple-app-site-association
