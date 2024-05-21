@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="refresh" content="0; url=/" />
+    <meta http-equiv="refresh" content="0; url=/?redirected=1" />
     <script type="text/javascript">
         // Redirect to the root index.html, preserving the path
-        window.location.href = "/";
+        if (window.location.pathname !== '/') {
+            window.location.href = "/?redirected=1";
+        }
     </script>
 </head>
 <body>
