@@ -9,10 +9,10 @@
     </style>
 </head>
 <body>
-    <h1>Welcome to Loopin</h1>
-    <iframe src="https://giphy.com/embed/xoHntNXFYkfzGAftEv" width="480" height="480" frameborder="0" class="giphy-embed" allowfullscreen></iframe>
+    <h1 id="title">Welcome to Loopin</h1>
+    <iframe id="gif" src="https://giphy.com/embed/xoHntNXFYkfzGAftEv" width="480" height="480" frameborder="0" class="giphy-embed" allowfullscreen></iframe>
     <p><a href="https://giphy.com/gifs/WBPictures-movie-sunglasses-barbie-xoHntNXFYkfzGAftEv">via GIPHY</a></p>
-    
+
     <script>
         // Handle client-side routing
         function navigate(event) {
@@ -24,9 +24,18 @@
 
         function handleRoute() {
             const path = window.location.pathname;
+            const title = document.getElementById('title');
+            const gif = document.getElementById('gif');
+
+            if (path === '/router') {
+                title.innerText = "Welcome to Loopin";
+                gif.src = "https://media.giphy.com/media/xT0xeJpnrWC4XWblEk/giphy.gif";
+            } else {
+                title.innerText = "Welcome to Loopin";
+                gif.src = "https://giphy.com/embed/xoHntNXFYkfzGAftEv";
+            }
+
             console.log('Navigated to', path);
-            // Implement route handling logic here
-            // For example, show/hide content based on the path
         }
 
         window.addEventListener('popstate', handleRoute);
