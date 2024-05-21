@@ -1,35 +1,41 @@
-echo '<!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Router Page</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Loopin</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f0f0f0;
-        }
-        .container {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            margin-top: 0;
-        }
+        .hidden { display: none; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Router Page</h1>
-        <p>Welcome to the router page!</p>
-    </div>
+    <h1>Welcome to Loopin</h1>
+    <iframe src="https://giphy.com/embed/xoHntNXFYkfzGAftEv" width="480" height="480" frameborder="0" class="giphy-embed" allowfullscreen></iframe>
+    <p><a href="https://giphy.com/gifs/WBPictures-movie-sunglasses-barbie-xoHntNXFYkfzGAftEv">via GIPHY</a></p>
+    
+    <script>
+        // Handle client-side routing
+        function navigate(event) {
+            event.preventDefault();
+            const path = event.target.getAttribute('href');
+            history.pushState({}, '', path);
+            handleRoute();
+        }
+
+        function handleRoute() {
+            const path = window.location.pathname;
+            console.log('Navigated to', path);
+            // Implement route handling logic here
+            // For example, show/hide content based on the path
+        }
+
+        window.addEventListener('popstate', handleRoute);
+        document.querySelectorAll('a').forEach(anchor => {
+            anchor.addEventListener('click', navigate);
+        });
+
+        // Handle initial route
+        handleRoute();
+    </script>
 </body>
-</html>' > router/index.html
+</html>
