@@ -1,66 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to Loopin</title>
     <style>
-        .hidden {
-            display: none;
-        }
+        .hidden { display: none; }
     </style>
 </head>
-
 <body>
     <h1 id="title">Welcome to Loopin</h1>
-    <iframe id="gif" src="https://giphy.com/embed/xoHntNXFYkfzGAftEv" width="480" height="480" frameborder="0"
-        class="giphy-embed" allowfullscreen></iframe>
+    <iframe id="gif" src="https://giphy.com/embed/xoHntNXFYkfzGAftEv" width="480" height="480" frameborder="0" class="giphy-embed" allowfullscreen></iframe>
     <p><a href="https://giphy.com/gifs/WBPictures-movie-sunglasses-barbie-xoHntNXFYkfzGAftEv">via GIPHY</a></p>
 
     <script>
         // Handle client-side routing
-        function navigate ( event )
-        {
+        function navigate(event) {
             event.preventDefault();
-            const path = event.target.getAttribute( 'href' );
-            history.pushState( {}, '', path );
+            const path = event.target.getAttribute('href');
+            history.pushState({}, '', path);
             handleRoute();
         }
-        function handleRoute ()
-        {
-            const queryString = window.location.search;
-            const urlParams = new URLSearchParams( queryString );
-            const redirectedPath = urlParams.get( 'path' );
-            const path = redirectedPath ? decodeURIComponent( redirectedPath ) : window.location.pathname;
 
-            if ( redirectedPath )
-            {
-                history.replaceState( {}, '', path ); // Replace the URL without reloading the page
+        function handleRoute() {
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            const redirectedPath = urlParams.get('path');
+            const path = redirectedPath ? decodeURIComponent(redirectedPath) : window.location.pathname + window.location.search;
+
+            if (redirectedPath) {
+                history.replaceState({}, '', path); // Replace the URL without reloading the page
             }
 
-            // const title = document.getElementById( 'title' );
-            // const gif = document.getElementById( 'gif' );
+            // const title = document.getElementById('title');
+            // const gif = document.getElementById('gif');
 
-            // if ( path === '/router' )
-            // {
-            //     title.innerText = "Welcome to Loopin";
-            //     gif.src = "https://media.giphy.com/media/xT0xeJpnrWC4XWblEk/giphy.gif";
-            // } else
-            // {
+            // if (path.startsWith('/router')) {
+            //     if (path === '/router') {
+            //         title.innerText = "Welcome to the Router Page";
+            //         gif.src = "https://media.giphy.com/media/xT0xeJpnrWC4XWblEk/giphy.gif";
+            //     } else if (path.startsWith('/router/listing')) {
+            //         const id = urlParams.get('id');
+            //         title.innerText = `Welcome to the Listing Page with ID ${id}`;
+            //         gif.src = "https://media.giphy.com/media/xT0xeJpnrWC4XWblEk/giphy.gif";
+            //     }
+            // } else {
             //     title.innerText = "Welcome to Loopin";
             //     gif.src = "https://giphy.com/embed/xoHntNXFYkfzGAftEv";
             // }
 
-            console.log( 'Navigated to', path );
+            console.log('Navigated to', path);
         }
 
-        window.addEventListener( 'popstate', handleRoute );
+        window.addEventListener('popstate', handleRoute);
 
         // Handle initial route
         handleRoute();
-
     </script>
 </body>
-
 </html>

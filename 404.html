@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redirecting...</title>
     <script type="text/javascript">
-        // Redirect to the root index.html, preserving the path
+        // Redirect to the root index.html, preserving the path and query parameters
         window.onload = function() {
-            const path = window.location.pathname;
+            const path = window.location.pathname + window.location.search + window.location.hash;
             if (path !== '/') {
                 window.location.replace(`/?path=${encodeURIComponent(path)}`);
             }
