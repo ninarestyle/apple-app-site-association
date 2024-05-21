@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="refresh" content="0; url=/?redirected=1" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
     <script type="text/javascript">
         // Redirect to the root index.html, preserving the path
-        if (window.location.pathname !== '/') {
-            window.location.href = "/?redirected=1";
-        }
+        window.onload = function() {
+            const currentPath = window.location.pathname + window.location.search + window.location.hash;
+            window.location.replace(`/?redirect=${encodeURIComponent(currentPath)}`);
+        };
     </script>
 </head>
 <body>
-    <p>If you are not redirected, <a href="/">click here</a>.</p>
+    <p>Redirecting...</p>
 </body>
 </html>

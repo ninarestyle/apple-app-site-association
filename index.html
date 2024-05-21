@@ -1,67 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to Loopin</title>
     <style>
-        .hidden {
-            display: none;
-        }
+        .hidden { display: none; }
     </style>
 </head>
-
 <body>
     <h1 id="title">Welcome to Loopin</h1>
-    <iframe id="gif" src="https://giphy.com/embed/xoHntNXFYkfzGAftEv" width="480" height="480" frameborder="0"
-        class="giphy-embed" allowfullscreen></iframe>
+    <iframe id="gif" src="https://giphy.com/embed/xoHntNXFYkfzGAftEv" width="480" height="480" frameborder="0" class="giphy-embed" allowfullscreen></iframe>
     <p><a href="https://giphy.com/gifs/WBPictures-movie-sunglasses-barbie-xoHntNXFYkfzGAftEv">via GIPHY</a></p>
 
     <script>
         // Handle client-side routing
-        function navigate ( event )
-        {
+        function navigate(event) {
             event.preventDefault();
-            const path = event.target.getAttribute( 'href' );
-            history.pushState( {}, '', path );
+            const path = event.target.getAttribute('href');
+            history.pushState({}, '', path);
             handleRoute();
         }
 
-        function handleRoute ()
-        {
+        function handleRoute() {
             const path = window.location.pathname;
-            const title = document.getElementById( 'title' );
-            const gif = document.getElementById( 'gif' );
+            const title = document.getElementById('title');
+            const gif = document.getElementById('gif');
 
-            if ( window.location.search.includes( 'redirected=1' ) )
-            {
-                history.replaceState( {}, '', path ); // Replace the URL without reloading the page
-            }
-
-            if ( path === '/router' )
-            {
+            if (path === '/router') {
                 title.innerText = "Welcome to the Router Page";
                 gif.src = "https://media.giphy.com/media/xT0xeJpnrWC4XWblEk/giphy.gif";
-            } else
-            {
+            } else {
                 title.innerText = "Welcome to Loopin";
                 gif.src = "https://giphy.com/embed/xoHntNXFYkfzGAftEv";
             }
 
-            console.log( 'Navigated to', path );
+            console.log('Navigated to', path);
         }
 
-
-        window.addEventListener( 'popstate', handleRoute );
-        document.querySelectorAll( 'a' ).forEach( anchor =>
-        {
-            anchor.addEventListener( 'click', navigate );
-        } );
+        window.addEventListener('popstate', handleRoute);
 
         // Handle initial route
         handleRoute();
     </script>
 </body>
-
 </html>
