@@ -6,12 +6,28 @@
     <title>Welcome to Loopin</title>
     <style>
         .hidden { display: none; }
+        #download-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #000;
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
+        #download-logo {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
     </style>
 </head>
 <body>
     <h1 id="title">Welcome to Loopin</h1>
     <iframe id="gif" src="https://giphy.com/embed/xoHntNXFYkfzGAftEv" width="480" height="480" frameborder="0" class="giphy-embed" allowfullscreen></iframe>
-    <p><a href="https://giphy.com/gifs/WBPictures-movie-sunglasses-barbie-xoHntNXFYkfzGAftEv">via GIPHY</a></p>
+    <a id="download-link" href="https://apps.apple.com/us/app/loopin-all-about-handbags/id6499573330">
+        <img id="download-logo" src="logo.png" alt="Loopin Logo">
+        Download the App
+    </a>
 
     <script>
         // Handle client-side routing
@@ -31,23 +47,6 @@
             if (redirectedPath) {
                 history.replaceState({}, '', path); // Replace the URL without reloading the page
             }
-
-            // const title = document.getElementById('title');
-            // const gif = document.getElementById('gif');
-
-            // if (path.startsWith('/router')) {
-            //     if (path === '/router') {
-            //         title.innerText = "Welcome to the Router Page";
-            //         gif.src = "https://media.giphy.com/media/xT0xeJpnrWC4XWblEk/giphy.gif";
-            //     } else if (path.startsWith('/router/listing')) {
-            //         const id = urlParams.get('id');
-            //         title.innerText = `Welcome to the Listing Page with ID ${id}`;
-            //         gif.src = "https://media.giphy.com/media/xT0xeJpnrWC4XWblEk/giphy.gif";
-            //     }
-            // } else {
-            //     title.innerText = "Welcome to Loopin";
-            //     gif.src = "https://giphy.com/embed/xoHntNXFYkfzGAftEv";
-            // }
 
             console.log('Navigated to', path);
         }
